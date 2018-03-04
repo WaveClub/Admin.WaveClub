@@ -1,0 +1,10 @@
+{
+    "api": {
+        "domen": "http://"
+    },
+    "defaultLanguage": "EN",
+    "socketd": "ws://",
+    "localStorageKey": {
+        "language": "Language"
+    }
+}
