@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import * as moment from 'moment';
 
 import { ConfigService } from 'app/services';
 
@@ -13,7 +14,9 @@ export class AppComponent {
         private config: ConfigService,
         private translate: TranslateService
     ) {
-        translate.setDefaultLang('en');
-        translate.use('en');
+        translate.setDefaultLang(config.app.defaultLanguage || 'en');
+		translate.use(localStorage.getItem(config.app.localStorageKey.language) || config.app.defaultLanguage || 'en');
+        
+        translate.onLangChange.subscribe((langEvent) => moment.locale(langEvent.lang));
     }
 }

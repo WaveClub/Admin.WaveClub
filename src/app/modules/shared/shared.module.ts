@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { TranslateModule } from '@ngx-translate/core';
+import { ApiService, ErrorService } from 'app/services';
+import { AccountService } from 'app/services/account';
 
 @NgModule({
     declarations: [
@@ -18,6 +20,9 @@ import { TranslateModule } from '@ngx-translate/core';
     exports: [
     ],
     providers: [
+        AccountService,
+        ApiService,
+        ErrorService
     ]
 })
 export class SharedModule {

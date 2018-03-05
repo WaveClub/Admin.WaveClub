@@ -6,9 +6,11 @@ import { SharedModule } from '../shared';
 import { DesktopRoutes } from './desktop.routes';
 
 import { DesktopComponent } from 'app/components/desktop';
+import { AuthorizationComponent } from 'app/components/desktop/authorization/authorization.component';
 
 @NgModule({
     declarations: [
+        AuthorizationComponent,        
         DesktopComponent,
     ],
     imports: [
@@ -17,6 +19,7 @@ import { DesktopComponent } from 'app/components/desktop';
         SharedModule,
     ],
     exports: [
+        AuthorizationComponent,        
         DesktopComponent,
         RouterModule
     ],

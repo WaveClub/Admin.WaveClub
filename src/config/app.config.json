@@ -1,2 +1,19 @@
 {
+    "api": {
+        "domen": "http://",
+        "methods": {
+            "login": "/Login"
+        }
+    },
+
+    "defaultLanguage": "EN",
+    "socketd": "ws://",
+
+    "localStorageKey": {
+        "language": "Language"
+    },
+
+    "errors": {
+        "noNameOrPass": "ENTER_YOUR_USERNAME_AND_PASSWORD"
+    }
 }
