@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'mobile',
-    templateUrl: './mobile.component.html',
-    styleUrls: ['./mobile.component.less']
+    styleUrls: [
+        './mobile.component.less'
+    ],
+    templateUrl: './mobile.component.html'
 })
 export class MobileComponent {
 }

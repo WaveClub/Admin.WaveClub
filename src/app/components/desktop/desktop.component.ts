@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'desktop',
-    templateUrl: './desktop.component.html',
-    styleUrls: ['./desktop.component.less']
+    styleUrls: [
+        './desktop.component.less'
+    ],
+    templateUrl: './desktop.component.html'
 })
 export class DesktopComponent {
 }

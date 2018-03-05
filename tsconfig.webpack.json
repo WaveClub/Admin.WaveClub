@@ -1,19 +1,18 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
+    "module": "es2015",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
-    "noEmit": true,
+    "sourceMap": false,
     "noEmitHelpers": true,
     "importHelpers": true,
     "strictNullChecks": false,
     "lib": [
-      "dom",
-      "es6"
+      "es2015",
+      "dom"
     ],
     "baseUrl": "./src",
     "paths": {},
@@ -21,16 +20,16 @@
       "node_modules/@types"
     ],
     "types": [
-      "node",
-      "source-map",
-      "uglify-js",
-      "webpack"
+      "node"
     ]
   },
   "exclude": [
     "node_modules",
     "dist"
   ],
+  "angularCompilerOptions": {
+    "skipMetadataEmit": true
+  },
   "compileOnSave": false,
   "buildOnSave": false,
   "atom": {

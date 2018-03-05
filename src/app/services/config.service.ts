@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()
@@ -11,10 +11,10 @@ export class ConfigService {
         return this.appConfig;
     }
 
-    public loadConfigs(): Promise<object[]> {
-        const appConfigPromise = this.http.get('/configs/app.config.json').toPromise();
-        appConfigPromise.then((config: AppConfig) => this.appConfig = config);  
-        
-        return Promise.all([appConfigPromise]);
+    public loadConfigs(): Promise<object> {
+        const appConfigPromise = this.http.get('/config/app.config.json').toPromise();
+        appConfigPromise.then((config: AppConfig) => this.appConfig = config);
+
+        return Promise.resolve(appConfigPromise);
     }
 }
