@@ -13,6 +13,7 @@ interface AppConfig {
         language: string;
     },
     errors: {
-        noNameOrPass: string;
+        noPhoneOrPass: string;
+        incorrectPhone: string;
     }
 }

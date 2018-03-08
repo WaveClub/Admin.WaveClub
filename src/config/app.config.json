@@ -1,10 +1,10 @@
 {
     "api": {
-        "domen": "http://http://82.202.246.165/api",
+        "domen": "http://82.202.246.165/api",
         "version": "/v1",
         "methods": {
-            "login": "/Login",
-            "registration": "/Registration"
+            "login": "/login",
+            "registration": "/registration"
         }
     },
 
@@ -16,6 +16,7 @@
     },
 
     "errors": {
-        "noNameOrPass": "ENTER_YOUR_USERNAME_AND_PASSWORD"
+        "noPhoneOrPass": "ERRORS.ENTER_YOUR_USERNAME_AND_PASSWORD",
+        "incorrectPhone": "ERRORS.INCORRECT_PHONE_NUMBER"
     }
 }

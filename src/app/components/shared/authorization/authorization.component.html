@@ -1,0 +1,7 @@
+<div class="authorization">
+    <div class="header">Wave Club</div>
+    <input type="phone" [(ngModel)]="phone" placeholder="X (XXX) XXX - XXXX" (keypress)="phoneValidation($event)"/>
+    <input type="password" [(ngModel)]="password" placeholder="Password"/>
+    <div class="error" *ngIf="errorMessage">{{ errorMessage }}</div>
+    <div class="btn-login" (click)="login()">Login</div>
+</div>

@@ -7,9 +7,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 import { ApiService, ErrorService } from 'app/services';
 import { AccountService } from 'app/services/account';
+import { AuthorizationComponent } from 'app/components/shared/authorization/authorization.component';
 
 @NgModule({
     declarations: [
+        AuthorizationComponent
     ],
     imports: [
         // BrowserModule,
@@ -20,6 +22,10 @@ import { AccountService } from 'app/services/account';
         TranslateModule
     ],
     exports: [
+        // Components
+        AuthorizationComponent,
+
+        // Module
         CommonModule,
         FormsModule,
     ],

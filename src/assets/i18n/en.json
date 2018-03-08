@@ -1,5 +1,6 @@
 {
     "ERRORS": {
-        "ENTER_YOUR_USERNAME_AND_PASSWORD": "Enter your username and password"
+        "ENTER_YOUR_USERNAME_AND_PASSWORD": "Enter your username and password",
+        "INCORRECT_PHONE_NUMBER": "Incorrect phone number"
     }
 }
