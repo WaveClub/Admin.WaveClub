@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -11,6 +12,7 @@ import { AccountService } from 'app/services/account';
     declarations: [
     ],
     imports: [
+        // BrowserModule,
         CommonModule,
         FormsModule,
         HttpClientModule,
@@ -18,6 +20,8 @@ import { AccountService } from 'app/services/account';
         TranslateModule
     ],
     exports: [
+        CommonModule,
+        FormsModule,
     ],
     providers: [
         AccountService,

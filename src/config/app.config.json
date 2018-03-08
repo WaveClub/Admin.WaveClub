@@ -1,8 +1,10 @@
 {
     "api": {
-        "domen": "http://",
+        "domen": "http://http://82.202.246.165/api",
+        "version": "/v1",
         "methods": {
-            "login": "/Login"
+            "login": "/Login",
+            "registration": "/Registration"
         }
     },
 

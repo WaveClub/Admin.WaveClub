@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { SharedModule } from '../shared';
+import { SharedModule } from 'app/modules/shared';
 
 import { DesktopRoutes } from './desktop.routes';
 
 import { DesktopComponent } from 'app/components/desktop';
 import { AuthorizationComponent } from 'app/components/desktop/authorization/authorization.component';
 
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
     declarations: [
-        AuthorizationComponent,        
+        AuthorizationComponent,
         DesktopComponent,
     ],
     imports: [
@@ -19,7 +21,7 @@ import { AuthorizationComponent } from 'app/components/desktop/authorization/aut
         SharedModule,
     ],
     exports: [
-        AuthorizationComponent,        
+        AuthorizationComponent,
         DesktopComponent,
         RouterModule
     ],

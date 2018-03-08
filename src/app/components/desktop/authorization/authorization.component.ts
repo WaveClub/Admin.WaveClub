@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 
 import { TranslateService } from '@ngx-translate/core';
-import { ConfigService, ErrorService } from 'app/services';
+import { ConfigService, ErrorService, AppState } from 'app/services';
 import { AccountService } from 'app/services/account';
 
+import { AuthorizationBaseComponent } from 'app/components/shared';
 
 @Component({
     selector: 'authorization',
@@ -12,29 +13,20 @@ import { AccountService } from 'app/services/account';
     ],
     templateUrl: './authorization.component.html'
 })
-export class AuthorizationComponent {
-    private phone: string;
-    private password: string;
-    private errorMessage: string;
+export class AuthorizationComponent extends AuthorizationBaseComponent implements OnDestroy {
+    public phone: string;
 
     constructor(
-        private config: ConfigService,
-        private errorService: ErrorService,
-        private translate: TranslateService,
-        private accountService: AccountService
+        protected appState: AppState,
+        protected config: ConfigService,
+        protected errorService: ErrorService,
+        protected translate: TranslateService,
+        protected accountService: AccountService
     ) {
+        super(appState, config, errorService, translate, accountService);
     }
 
-    private login() {
-        if (!this.checkCredentials) {
-            this.errorMessage = this.translate.instant(this.config.app.errors.noNameOrPass);
-            return;
-        }
-        this.accountService.authorization(this.phone, this.password)
-            .subscribe((status) => console.log(status));
-    }
-
-    private checkCredentials(): boolean {
-        return !!this.phone && !!this.password;
+    public ngOnDestroy() {
+        super.ngOnDestroy();
     }
 }

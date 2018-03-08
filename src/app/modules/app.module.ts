@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -29,6 +30,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     imports: [
         AppRoutingModule,
         BrowserModule,
+        FormsModule,
         HttpClientModule,
         TranslateModule.forRoot({
             loader: {

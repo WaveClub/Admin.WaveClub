@@ -12,6 +12,7 @@ export class ApiService {
 
     constructor(
         private http: HttpClient,
+        // tslint:disable-next-line:no-forward-ref
         @Inject(forwardRef(() => ConfigService)) private config: ConfigService
     ) {}
 
@@ -20,7 +21,7 @@ export class ApiService {
     }
 
     private get apiUrl(): string {
-        return this.config.app.api.domen;
+        return `${this.config.app.api.domen}${this.config.app.api.version}`;
     }
 
     public sendApiRequest(body: any, method: string, headers?: Headers) {

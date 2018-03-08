@@ -1,8 +1,10 @@
 interface AppConfig {
     api: {
         domen: string;
+        version: string;
         methods: {
             login: string;
+            registration: string;
         }
     }
     defaultLanguage: string;
