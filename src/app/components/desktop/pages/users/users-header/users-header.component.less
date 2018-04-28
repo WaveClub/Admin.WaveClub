@@ -1,0 +1,31 @@
+.extra-menu {
+    display: flex;
+    height: 48px;
+    width: 100%;
+
+    .em-items {
+        display: flex;
+        padding-left: 56px;
+        align-items: center;
+
+        div {
+            padding: 0 24px;
+            line-height: 46px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 14px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.6);
+            transition: color .15s linear;
+            cursor: pointer;
+
+            &:hover, &.active {
+                color: #fff;
+            }
+
+            &.active {
+                border-bottom: 2px solid #536dfe;
+            }
+        }
+    }
+}

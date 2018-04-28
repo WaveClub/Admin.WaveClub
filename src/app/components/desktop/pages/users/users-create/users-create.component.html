@@ -1,0 +1,41 @@
+<div class="detail">
+    <div class="header">
+        <div (click)="activeTab = 1" [ngClass]="{'active': activeTab === 1}">General</div>
+        <div (click)="activeTab = 2" [ngClass]="{'active': activeTab === 2}">Club</div>
+        <div class="close"><i class="material-icons" (click)="close()">&#xE5CD;</i></div>
+    </div>
+
+    <div class="content">
+        <div [ngClass]="{'warning': !cUser.name || cUser.name.length === 0}">
+            <div>First Name</div>
+            <input type="text" [(ngModel)]="cUser.name">
+        </div>
+        <div [ngClass]="{'warning': !cUser.phone || cUser.phone.length === 0}">
+            <div>Phone Number</div>
+            <input type="text" [(ngModel)]="cUser.phone">
+        </div>
+        <div>
+            <div>Birth Date</div>
+            <input type="text" [(ngModel)]="cUser.birth_date">
+        </div>
+        <div [ngClass]="{'warning': !cUser.sex || cUser.sex == undefined}">
+            <div>Sex</div>
+            <!--<input type="text" [(ngModel)]="user.sex">-->
+            <select #sex (change)="cUser.sex = sex.value">
+                <option value="male" [selected]="cUser.sex == male">male</option>
+                <option value="female" [selected]="cUser.sex == female">female</option>
+            </select>
+        </div>
+        <div [ngClass]="{'warning': !cUser.role || cUser.role == undefined}">
+            <div>Role</div>
+            <!--<input type="text" [(ngModel)]="user.role">-->
+            <select #role (change)="cUser.role = role.value">
+                <option value="admin" [selected]="cUser.role == admin">admin</option>
+                <option value="moderator" [selected]="cUser.role == moderator">moderator</option>
+                <option value="user" [selected]="cUser.role == user">user</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="save" (click)="createUser()">Create User</div>
+</div>

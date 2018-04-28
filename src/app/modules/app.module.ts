@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
@@ -30,6 +31,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     imports: [
         AppRoutingModule,
         BrowserModule,
+        BrowserAnimationsModule,
         FormsModule,
         HttpClientModule,
         TranslateModule.forRoot({

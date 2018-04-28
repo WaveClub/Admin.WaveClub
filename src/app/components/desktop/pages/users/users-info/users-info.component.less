@@ -1,0 +1,168 @@
+.search {
+    margin: 16px 0 0 16px;
+
+    >div {
+        color: #607d8b;
+        text-transform: uppercase;
+        font-weight: bolder;
+        font-family: Roboto;
+    }
+
+    input {
+        border: none;
+        border-bottom: 1px solid rgba(0,0,0,.12);
+        font-size: 16px;
+        padding: 4px 0 4px 4px;
+        width: 100%;
+        background: 0 0;
+        text-align: left;
+        outline: none;
+
+        &:focus {
+            border-bottom: 2px solid #607d8b;
+        }
+    }
+}
+
+.filter {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    padding: 10px 35px;
+    margin: 16px 0 0 16px;
+    height: 100px;
+    min-width: 300px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    background: white;
+    font-family: Roboto;
+    text-transform: capitalize;
+
+    >div {
+        display: flex;
+        toggle-switch {
+            padding: 0 4px;
+        }
+
+        >div {
+            font-size: 16px;
+            line-height: 24px;
+            margin: 0;
+            left: 24px;
+            color: rgba(0,0,0,.87);
+            font-weight: 400;
+            padding-left: 10px;
+        }
+    }
+}
+
+.users {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    margin: 16px 16px 0;
+    width: 100%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    background: white;
+    font-family: Roboto;
+
+    .header, .content {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        // height: 48px;
+        height: 61px;
+        border-bottom: 1px solid #c1c1c1;
+
+        .active, .name, .login, .sex, .role, .last-activity, .birth-date {
+            display: flex;
+            padding: 0 10px;
+            color: #777;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .birth-date, .last-activity {
+            width: 15.5%;
+        }
+
+        .active, .sex {
+            width: 7%;
+        }
+
+        .name {
+            width: 20%;
+        }
+
+        .login {
+            width: 18%;
+        }
+
+        .role {
+            width: 10%;
+        }
+
+        .refresh {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #536dfe;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+        }
+
+        .add-user {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40px;
+            width: 40px;
+            margin: 0 10px;
+            border-radius: 50%;
+            background: hsla(0,0%,62%,.2);
+            box-shadow: 0 1px 1.5px 0 rgba(0,0,0,.12), 0 1px 1px 0 rgba(0,0,0,.24);
+            cursor: pointer;
+        }
+    }
+
+    .content {
+        height: 26px;
+        cursor: pointer;
+
+        .active, .name, .login, .sex, .role, .last-activity, .birth-date {
+            color: rgba(0,0,0,.87);
+            font: 0.9em/1.67 Open Sans,Arial,Sans-serif;
+            text-transform: capitalize;
+        }
+
+        .active {
+            color: red;
+            &.activated {
+                color: green;
+            }
+        }
+
+        &:hover {
+            background-color: #e0e0e0;
+        } 
+
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+}
+
+users-detail, users-create {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    background: rgba(0,0,0,.4);
+}

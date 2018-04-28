@@ -1,0 +1,16 @@
+<div class="main-menu">
+    <div class="menu-title">
+        <i class="material-icons" (click)="showMenu()">&#xE8FE;</i>
+        <div>{{ menuItem }}</div>
+    </div>
+    <div class="profile" (click)="isShowProfileItems = !isShowProfileItems">
+        <div>Hello, {{ account.name }}</div>
+        <i class="material-icons">&#xE853;</i>
+    </div>
+</div>
+
+<div class="profile-items" *ngIf="isShowProfileItems" @fade>
+    <div>Profile</div>
+    <div>Messages</div>
+    <div (click)="logout()">Logout</div>
+</div>

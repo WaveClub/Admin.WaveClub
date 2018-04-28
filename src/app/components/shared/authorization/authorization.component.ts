@@ -1,7 +1,7 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, Output, EventEmitter } from '@angular/core';
 
 import { TranslateService } from '@ngx-translate/core';
-import { ConfigService, ErrorService, AppState } from 'app/services';
+import { ConfigService, ObservableService, AppState } from 'app/services';
 import { AccountService } from 'app/services/account';
 
 @Component({
@@ -12,17 +12,18 @@ import { AccountService } from 'app/services/account';
     templateUrl: './authorization.component.html'
 })
 export class AuthorizationComponent implements OnDestroy {
-    public phone: string; // /^\+?\d{1}[- ]?\d{3}[- ]?\d{7}$/
+    @Output() public onAuthorization = new EventEmitter();
+
+    public phone: string;
     public password: string;
-    public errorMessage: string;
 
     private isMobile: boolean;
-    public eventPressEnter;
+    private eventPressEnter;
 
     constructor(
         protected appState: AppState,
         protected config: ConfigService,
-        protected errorService: ErrorService,
+        protected observableService: ObservableService,
         protected translate: TranslateService,
         protected accountService: AccountService
     ) {
@@ -40,19 +41,23 @@ export class AuthorizationComponent implements OnDestroy {
 
     public login() {
         if (this.checkCredentials()) {
-            this.accountService.authorization(this.phone, this.password)
-                .subscribe((status) => console.log(status), this.errorMessage = undefined);
+            this.accountService.authorization(this.phone.replace(/[^0-9]/gim, ''), this.password)
+                .subscribe((status) => {
+                    if (status) {
+                        this.onAuthorization.emit();
+                    }
+                });
         }
     }
 
     public phoneValidation(event) {
-        let value = event.target.value;
-        let key = event.key;
+        const value = event.target.value;
+        const key = event.key;
 
         if (!isNaN(key) && key >= '0' && key <= '9') {
 
             switch (value.length) {
-                case 1: 
+                case 1:
                     this.phone += ' (';
                     break;
                 case 6:
@@ -72,19 +77,19 @@ export class AuthorizationComponent implements OnDestroy {
     }
 
     private pressEnter(event) {
-        if (event.key === "Enter") {
+        if (event.key === 'Enter') {
             this.login();
         }
     }
 
     private checkCredentials(): boolean {
         if (!this.phone || !this.password) {
-            this.errorMessage = this.translate.instant(this.config.app.errors.noPhoneOrPass);  
-            return false;          
+            this.observableService.errorMessage = this.translate.instant(this.config.app.errors.noPhoneOrPass);
+            return false;
         }
 
         if (this.phone.length < 18) {
-            this.errorMessage = this.translate.instant(this.config.app.errors.incorrectPhone);
+            this.observableService.errorMessage = this.translate.instant(this.config.app.errors.incorrectPhone);
             return false;
         }
 

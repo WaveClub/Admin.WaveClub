@@ -2,16 +2,25 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { TranslateModule } from '@ngx-translate/core';
-import { ApiService, ErrorService } from 'app/services';
+import { ApiService, ObservableService, MyHttpInterceptor } from 'app/services';
 import { AccountService } from 'app/services/account';
+
 import { AuthorizationComponent } from 'app/components/shared/authorization/authorization.component';
+import { ToggleSwitchComponent } from 'app/components/shared/other/toggle-switch/toggle-switch.component';
+
+import { SearchUsersPipe } from 'app/pipes/search-users.pipe';
 
 @NgModule({
     declarations: [
-        AuthorizationComponent
+        // Components
+        AuthorizationComponent,
+        ToggleSwitchComponent,
+
+        // Pipes
+        SearchUsersPipe
     ],
     imports: [
         // BrowserModule,
@@ -24,15 +33,25 @@ import { AuthorizationComponent } from 'app/components/shared/authorization/auth
     exports: [
         // Components
         AuthorizationComponent,
+        ToggleSwitchComponent,
 
-        // Module
+        // Modules
         CommonModule,
         FormsModule,
+
+        // Pipes
+        SearchUsersPipe
     ],
     providers: [
         AccountService,
         ApiService,
-        ErrorService
+        ObservableService,
+
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: MyHttpInterceptor,
+            multi: true
+        }
     ]
 })
 export class SharedModule {

@@ -1,1 +1,13 @@
-<authorization></authorization>
+<pop-up-warning></pop-up-warning>
+
+<authorization *ngIf="!account" (onAuthorization)="onAuthorization()"></authorization>
+<ng-container *ngIf="account">
+    <header [account]="account" (onLogout)="onLogout()" (onShowMenu)="onShowMenu()"></header>
+
+    <menu *ngIf="isShowMenu" @emersion></menu>
+    <div class="menu-other" *ngIf="isShowMenu" (click)="onShowMenu()" @fade></div>
+
+    <div class="main">
+        <users-page *ngIf="isUsersPage"></users-page>
+    </div>
+</ng-container>

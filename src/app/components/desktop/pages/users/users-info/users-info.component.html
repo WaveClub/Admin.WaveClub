@@ -1,0 +1,46 @@
+<div>
+    <div class="search">
+        <div>Search</div>
+        <input type="text" [(ngModel)]="searchWord">
+    </div>
+
+    <div class="filter">
+        <div>
+            <toggle-switch [isActive]="isOnlyActivated" (click)="isOnlyActivated = !isOnlyActivated"></toggle-switch>
+            <div>Only activated</div>
+        </div>
+    </div>
+</div>
+
+<div class="users">
+    <div class="header">
+        <div class="active">Activated</div>
+        <div class="last-activity">Last Activity</div>
+        <div class="birth-date">Birth Date</div>
+        <div class="name">Name</div>
+        <div class="login">Phone</div>
+        <div class="sex">Sex</div>
+        <div class="role">Role</div>
+
+        <div class="add-user" (click)="isCreateUser = !isCreateUser">
+            <i class="material-icons">add</i>
+        </div>
+        <div class="refresh" (click)="refreshUsers()">
+            <i class="material-icons">&#xE863;</i>
+        </div>
+    </div>
+    <ng-container *ngFor="let user of users | searchUsers : searchWord">
+        <div class="content" *ngIf="isOnlyActivated && user.is_active || !isOnlyActivated" (click)="selectUser(user)">
+            <div class="active" [ngClass]="{'activated': user.is_active}"><i class="material-icons">&#xE876;</i></div>
+            <div class="last-activity"></div>
+            <div class="birth-date"></div>
+            <div class="name">{{ user.name }}</div>
+            <div class="login">{{ user.phone }}</div>
+            <div class="sex">{{ user.sex }}</div>
+            <div class="role">{{ user.role }}</div>
+        </div>
+    </ng-container>
+</div>
+
+<users-create (onClose)="isCreateUser = !isCreateUser; refreshUsers()" *ngIf="isCreateUser"></users-create>
+<users-detail [user]="currentUser" (onClose)="currentUser = undefined" *ngIf="currentUser"><users-detail>

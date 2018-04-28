@@ -3,6 +3,7 @@ interface AppConfig {
         domen: string;
         version: string;
         methods: {
+            account: string;
             login: string;
             registration: string;
         }

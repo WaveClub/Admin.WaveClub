@@ -1,9 +1,9 @@
 export class GetAccountRequest {
-    Phone: string;
-    Password: string;
+    public phone: string;
+    public password: string;
 
     constructor(phone: string, password: string) {
-        this.Phone = phone;
-        this.Password = password;
+        this.phone = phone;
+        this.password = password;
     }
 }
